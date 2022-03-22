@@ -1,0 +1,8 @@
+playing field
+    nested loop:
+        1st loop, creates row elements to house the cells
+        2nd loop creates the cell elements adds event listeners to each cell
+        even listner toggles class that adds 
+
+player1
+player2
