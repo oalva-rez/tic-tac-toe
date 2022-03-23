@@ -3,6 +3,12 @@
 let playField = (function () {
   let field = document.querySelector(".play-field");
   let row, cell;
+  let winner;
+  let getWinner = () => winner;
+  let setWinner = (turn) => {
+    winner = turn;
+    console.log(`Winner is ${winner}!!!`);
+  };
   let turn = "o";
   let getTurn = () => turn;
   let setTurn = (play) => (turn = play);
@@ -39,13 +45,13 @@ let playField = (function () {
     addEvent(el);
   });
 
-  return { getTurn, setTurn };
+  return { getTurn, setTurn, setWinner, getWinner };
 })();
 
 let testWinner = () => {
-  let winner;
   let row = document.querySelectorAll("tr");
 
+  // arrays of diagonal cells
   let diagArr1 = [
     row[0].querySelector(":nth-child(1)").textContent,
     row[1].querySelector(":nth-child(2)").textContent,
@@ -56,42 +62,40 @@ let testWinner = () => {
     row[1].querySelector(":nth-child(2)").textContent,
     row[2].querySelector(":nth-child(1)").textContent,
   ];
-  console.log(diagArr1);
 
   // test winner at both diagonals
   if (diagArr1.join("") === "XXX" || diagArr1.join("") === "OOO") {
-    winner = playField.getTurn();
+    playField.setWinner(playField.getTurn());
     endGame();
-    console.log(winner);
   }
   if (diagArr2.join("") === "XXX" || diagArr2.join("") === "OOO") {
-    winner = playField.getTurn();
+    playField.setWinner(playField.getTurn());
     endGame();
-    console.log(winner);
   }
 
   // test winner in every column
   transposeGrid().map((r) => {
     if (r.join("") === "XXX" || r.join("") === "OOO") {
-      winner = playField.getTurn();
+      playField.setWinner(playField.getTurn());
       endGame();
-      console.log(winner);
     }
   });
   // test winner in every row
   row.forEach((c) => {
     if (c.textContent === "XXX" || c.textContent === "OOO") {
-      winner = playField.getTurn();
+      playField.setWinner(playField.getTurn());
       endGame();
-      console.log(winner);
     }
   });
-
-  return winner;
 };
 let endGame = () => {
   playField.setTurn(null);
 };
+
+// let restartGame = () => {
+//   playField.setTurn("o");
+
+// };
 
 // transpose grid (columns -> rows)
 let transposeGrid = () => {
