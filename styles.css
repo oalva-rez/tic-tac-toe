@@ -1,8 +1,21 @@
-table {
-  margin: auto;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  place-content: center;
 }
 
 td {
   border: 1px solid black;
-  padding: 10px;
+  text-align: center;
+  width: 120px;
+  height: 120px;
+  font-family: "Nunito", sans-serif;
+  font-size: 80px;
+  border-radius: 10px;
 }

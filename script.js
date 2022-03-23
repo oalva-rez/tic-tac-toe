@@ -18,7 +18,7 @@ let playField = (function () {
     field.appendChild(row);
     for (let j = 0; j < 3; j++) {
       cell = document.createElement("td");
-      cell.textContent = "-";
+      cell.textContent = "";
       row.appendChild(cell);
     }
   }
