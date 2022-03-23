@@ -36,7 +36,6 @@ header {
   display: flex;
   justify-content: center;
   font-size: 3rem;
-  margin: 15px 0;
 }
 .scores {
   display: flex;
@@ -60,9 +59,9 @@ td {
   border-radius: 15px;
   padding: 5px;
   font-size: 1.5rem;
-  margin-bottom: 15px;
   align-self: center;
   visibility: visible;
+  color: black;
 }
 .next-vis {
   visibility: hidden;
