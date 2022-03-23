@@ -14,9 +14,24 @@
     <title>Tic Tac Toe</title>
   </head>
   <body>
-    <table>
-      <tbody class="play-field"></tbody>
-    </table>
-    <script src="script.js"></script>
+    <div class="wrapper">
+      <div class="start-page">
+        <h1>Tic-Tac_toe</h1>
+        <button>Start Game</button>
+      </div>
+      <div class="result-page"></div>
+      <header><h1>Tic Tac Toe</h1></header>
+      <main class="mid-container">
+        <table>
+          <tbody class="play-field"></tbody>
+        </table>
+
+        <div class="player-turn"><span id="turn">x</span>'s turn</div>
+        <button class="next-round next-vis">Play Again</button>
+      </main>
+      <footer>Copyright &copy; | Ozkar Alvarez GIT</footer>
+    </div>
+    <script src="app.js"></script>
+    <script src="dom.js"></script>
   </body>
 </html>
