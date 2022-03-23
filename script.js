@@ -39,21 +39,60 @@ let playField = (function () {
 })();
 
 let testWinner = () => {
-  let winner;
+  let winner, colNth;
   let row = document.querySelectorAll("tr");
+  let col = document.querySelectorAll("td");
+  let colArray = [];
+  let diagArr1 = [
+    row[0].querySelector(":nth-child(1)").textContent,
+    row[1].querySelector(":nth-child(2)").textContent,
+    row[2].querySelector(":nth-child(3)").textContent,
+  ];
+  let diagArr2 = [
+    row[0].querySelector(":nth-child(3)").textContent,
+    row[1].querySelector(":nth-child(2)").textContent,
+    row[2].querySelector(":nth-child(1)").textContent,
+  ];
+  console.log(diagArr1);
 
-  let cols = document.querySelectorAll("td");
+  // transpose grid (columns -> rows)
+  for (let i = 1; i <= 3; i++) {
+    let arrRow = [];
+    colNth = document.querySelectorAll(`tr :nth-child(${i})`);
+    for (let cell of colNth) {
+      arrRow.push(cell.textContent);
+    }
+    colArray.push(arrRow);
+  }
 
-  console.log(row);
+  // test winner at both diagonals
+  if (diagArr1.join("") === "XXX" || diagArr1.join("") === "OOO") {
+    winner = playField.getTurn();
+    console.log(winner);
+  }
+  if (diagArr2.join("") === "XXX" || diagArr2.join("") === "OOO") {
+    winner = playField.getTurn();
+    console.log(winner);
+  }
 
+  // test winner in every column
+  colArray.map((r) => {
+    if (r.join("") === "XXX" || r.join("") === "OOO") {
+      winner = playField.getTurn();
+      console.log(winner);
+    }
+  });
+  // test winner in every row
   row.forEach((c) => {
     if (c.textContent === "XXX" || c.textContent === "OOO") {
       winner = playField.getTurn();
+      console.log(winner);
     }
   });
+
   return winner;
 };
-
+let endGame = () => {};
 function Player(marker) {
   const getMarker = () => marker;
   return { getMarker };
