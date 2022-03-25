@@ -57,7 +57,7 @@ let playField = (function () {
   return { getTurn, setTurn, setResult, getResult };
 })();
 
-function testWinner() {
+let testWinner = () => {
   let rows = document.querySelectorAll("tr");
   let cells = document.querySelectorAll("td");
 
@@ -105,7 +105,7 @@ function testWinner() {
     playField.setResult("TIE");
     endGame();
   }
-}
+};
 
 let endGame = () => {
   let nextRoundBtn = document.querySelector(".next-vis");
